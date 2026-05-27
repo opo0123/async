@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="wrap"></div>
+    <script>
+      const wrap = document.querySelector("#wrap");
+      // 서버 요청 객체
+      const xhr = new XMLHttpRequest();
+      // json 요청
+      xhr.open("GET", "data3.json", true);
+      // 데이터 로드 (화면 출력)
+      xhr.onload = () => {
+        if (xhr.status === 200) {
+          // 문자열 -> 객체 변환
+          const data = JSON.parse(xhr.responseText);
+          data.forEach(function (item) {
+            wrap.innerHTML += `<div class="card">
+        <h2>${item.title}</h2>
+        <img src="${item.img}" alt="${item.alt}">
+      </div>`;
+          });
+        }
+      };
+      xhr.send();
+    </script>
+  </body>
+</html>

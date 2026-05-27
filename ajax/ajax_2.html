@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      const xhr = new XMLHttpRequest();
+      xhr.open("GET", "data2.json", true);
+      xhr.onload = () => {
+        if (xhr.status === 200) {
+          const data = JSON.parse(xhr.responseText);
+          // console.log(data); // js객체로 담겨야 함
+          document.write(`<h2>제목 : ${data.title}</h2>`);
+          document.write(`<img src="${data.img}" alt="${data.alt}">`);
+        }
+      };
+      xhr.send();
+    </script>
+  </body>
+</html>
