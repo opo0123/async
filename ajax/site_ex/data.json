@@ -1,0 +1,92 @@
+[
+  {
+    "category": "pc",
+    "title": "노트북",
+    "desc": "고성능 업무용 노트북",
+    "price": 1200000,
+    "sale": 10,
+    "img": "https://images.unsplash.com/photo-1496181133206-80ce9b88a853",
+    "alt": "노트북 이미지"
+  },
+  {
+    "category": "mobile",
+    "title": "스마트폰",
+    "desc": "최신형 스마트폰",
+    "price": 980000,
+    "sale": 15,
+    "img": "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9",
+    "alt": "스마트폰 이미지"
+  },
+  {
+    "category": "pc",
+    "title": "헤드셋",
+    "desc": "노이즈 캔슬링 헤드셋",
+    "price": 230000,
+    "sale": 5,
+    "img": "https://images.unsplash.com/photo-1505740420928-5e560c06d30e",
+    "alt": "헤드셋 이미지"
+  },
+  {
+    "category": "pc",
+    "title": "키보드",
+    "desc": "기계식 RGB 키보드",
+    "price": 120000,
+    "sale": 20,
+    "img": "https://images.unsplash.com/photo-1511467687858-23d96c32e4ae",
+    "alt": "키보드 이미지"
+  },
+  {
+    "category": "pc",
+    "title": "마우스",
+    "desc": "무선 게이밍 마우스",
+    "price": 89000,
+    "sale": 12,
+    "img": "https://images.unsplash.com/photo-1527814050087-3793815479db",
+    "alt": "마우스 이미지"
+  },
+  {
+    "category": "pc",
+    "title": "모니터",
+    "desc": "27인치 4K 모니터",
+    "price": 450000,
+    "sale": 18,
+    "img": "https://images.unsplash.com/photo-1527443224154-c4a3942d3acf",
+    "alt": "모니터 이미지"
+  },
+  {
+    "category": "mobile",
+    "title": "태블릿",
+    "desc": "휴대용 태블릿 PC",
+    "price": 650000,
+    "sale": 8,
+    "img": "https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0",
+    "alt": "태블릿 이미지"
+  },
+  {
+    "category": "pc",
+    "title": "스피커",
+    "desc": "블루투스 스피커",
+    "price": 150000,
+    "sale": 25,
+    "img": "https://images.unsplash.com/photo-1545454675-3531b543be5d",
+    "alt": "스피커 이미지"
+  },
+  {
+    "category": "pc",
+    "title": "카메라",
+    "desc": "미러리스 디지털 카메라",
+    "price": 1500000,
+    "sale": 7,
+    "img": "https://images.unsplash.com/photo-1516035069371-29a1b244cc32",
+    "alt": "카메라 이미지"
+  },
+  {
+    "category": "mobile",
+    "title": "스마트워치",
+    "desc": "운동 기록 스마트워치",
+    "price": 320000,
+    "sale": 30,
+    "img": "https://images.unsplash.com/photo-1523275335684-37898b6baf30",
+    "alt": "스마트워치 이미지"
+  }
+]
