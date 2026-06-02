@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>fetch3</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      img {
+        display: block;
+        width: 100%;
+        object-fit: cover;
+      }
+      .container {
+        max-width: 1200px;
+        margin: 50px auto;
+        padding: 20px;
+        display: flex;
+        gap: 30px;
+      }
+      .left {
+        flex: 1;
+      }
+      .left h1 {
+        margin-bottom: 20px;
+      }
+      .right {
+        width: 400px;
+      }
+      .item {
+        width: calc(50% - 10px);
+        border: 1px solid #ddd;
+        padding: 10px;
+        cursor: pointer;
+        transition: 0.3s;
+      }
+      .item h3 {
+        margin-top: 10px;
+      }
+      .item:hover {
+        transform: translateY(-5px);
+      }
+      .items-container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+      }
+      .detail {
+        border: 1px solid #ddd;
+        padding: 20px;
+      }
+      .detail img {
+        margin-bottom: 15px;
+      }
+      .detail h2 {
+        margin-bottom: 10px;
+      }
+      .detail p {
+        line-height: 1.6;
+      }
+      #detail {
+        margin-top: 65px;
+        border: 1px solid #ddd;
+        padding: 10px;
+        cursor: pointer;
+        transition: 0.3s;
+      }
+    </style>
+    <script src="items.js"></script>
+  </head>
+  <body>
+    <div class="container">
+      <!-- 왼 -->
+      <div class="left">
+        <h1>ITEMS</h1>
+        <div class="items-container" id="items">
+          <!-- js 출력 -->
+        </div>
+      </div>
+      <div class="right">
+        <div id="detail">
+          <div class="detail">
+            <h2>상품을 선택하세요</h2>
+            <p>왼쪽 상품을 클릭하면 상세 정보가 표시됩니다.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

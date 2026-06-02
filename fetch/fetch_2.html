@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>fetch2</title>
+  </head>
+  <body>
+    <div id="result">
+      <!-- js출력 -->
+    </div>
+    <script>
+      fetch("product.json")
+        .then((response) => {
+          return response.json();
+        })
+        .then((data) => {
+          // console.log(data);
+          let html = "";
+          data.forEach((item) => {
+            // console.log(item); // 하나씩 찍힘
+            html += `<div class="card">
+        <h3>상품명 : ${item.name}</h3>
+        <p>${item.price.toLocaleString()}원</p>
+      </div>`;
+          });
+          document.querySelector("#result").innerHTML = html;
+        })
+        .catch((error) => {
+          console.log(errer);
+        });
+    </script>
+  </body>
+</html>
