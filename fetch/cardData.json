@@ -1,0 +1,53 @@
+[
+  [
+    {
+      "imageSrc": "images/work-1.jpg",
+      "description": "설명 1",
+      "price": "$10"
+    },
+    {
+      "imageSrc": "images/work-2.jpg",
+      "description": "설명 1",
+      "price": "$10"
+    },
+    {
+      "imageSrc": "images/work-3.jpg",
+      "description": "설명 1",
+      "price": "$10"
+    }
+  ],
+  [
+    {
+      "imageSrc": "images/work-2.jpg",
+      "description": "설명 2",
+      "price": "$15"
+    },
+    {
+      "imageSrc": "images/work-2.jpg",
+      "description": "설명 2",
+      "price": "$15"
+    },
+    {
+      "imageSrc": "images/work-2.jpg",
+      "description": "설명 2",
+      "price": "$15"
+    }
+  ],
+  [
+    {
+      "imageSrc": "images/work-3.jpg",
+      "description": "설명 3",
+      "price": "$20"
+    },
+    {
+      "imageSrc": "images/work-3.jpg",
+      "description": "설명 3",
+      "price": "$20"
+    },
+    {
+      "imageSrc": "images/work-3.jpg",
+      "description": "설명 3",
+      "price": "$20"
+    }
+  ]
+]

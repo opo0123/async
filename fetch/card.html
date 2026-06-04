@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>카드 탭메뉴</title>
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+      }
+      ul,
+      li {
+        list-style: none;
+      }
+      a {
+        text-decoration: none;
+        color: #333;
+      }
+      img {
+        width: 100%;
+        display: block;
+      }
+      .menu {
+        width: 70%;
+        margin: 100px auto;
+        display: flex;
+      }
+      .menu-item {
+        flex: 1;
+        text-align: center;
+        padding: 10px;
+        background-color: #f0f0f0;
+      }
+      .menu-item:hover,
+      .menu-item.active {
+        background-color: #5b70ce;
+        color: #fff;
+      }
+      .card-container {
+        width: 80%;
+        margin: auto;
+      }
+      .card {
+        display: flex;
+        gap: 10px;
+        padding: 20px;
+        border: 1px solid #ccc;
+      }
+      .card li {
+        flex: 1;
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="menu">
+      <div class="menu-item">MENU01</div>
+      <div class="menu-item">MENU02</div>
+      <div class="menu-item">MENU03</div>
+    </div>
+    <div class="card-container">
+      <!-- js 출력 -->
+    </div>
+    <script>
+      const cardContainer = document.querySelector(".card-container");
+      // json 정보 가져오기
+      fetch("cardData.json")
+        .then((response) => {
+          return response.json();
+        })
+
+        .then((cardData) => {
+          //   console.log(cardData);
+          cardData.forEach((menu, index) => {
+            // 카드 리스트 (ul) 생성
+            const cardList = document.createElement("ul");
+
+            cardList.classList.add("card");
+            menu.forEach((card) => {
+              // 카드 (li) 생성
+              const cardItem = document.createElement("li");
+
+              // 카트 내용 넣기
+              cardItem.innerHTML = `
+                 <img src="${card.imageSrc}" alt="${card.description}">
+                 <h2>설명:${card.description}</h2>
+                 <p>가격:${card.price}</p>
+                `;
+
+              // card 내용 자식으로 추가하기
+              cardList.appendChild(cardItem);
+            });
+            cardContainer.appendChild(cardList);
+          });
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+
+      const menuItem = document.querySelectorAll(".menu-item");
+
+      menuItem.forEach((menuI, index) => {
+        // console.log(menuItem, index);
+        menuI.addEventListener("click", () => {
+          showCard(index);
+        });
+      });
+
+      // 보여지는 함수
+      function showCard(index) {}
+    </script>
+  </body>
+</html>
