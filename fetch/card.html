@@ -43,7 +43,7 @@
         margin: auto;
       }
       .card {
-        display: flex;
+        display: none;
         gap: 10px;
         padding: 20px;
         border: 1px solid #ccc;
@@ -51,6 +51,9 @@
       .card li {
         flex: 1;
         text-align: center;
+      }
+      .card.active {
+        display: flex;
       }
     </style>
   </head>
@@ -65,6 +68,7 @@
     </div>
     <script>
       const cardContainer = document.querySelector(".card-container");
+
       // json 정보 가져오기
       fetch("cardData.json")
         .then((response) => {
@@ -78,38 +82,55 @@
             const cardList = document.createElement("ul");
 
             cardList.classList.add("card");
+
             menu.forEach((card) => {
               // 카드 (li) 생성
               const cardItem = document.createElement("li");
 
               // 카트 내용 넣기
               cardItem.innerHTML = `
-                 <img src="${card.imageSrc}" alt="${card.description}">
-                 <h2>설명:${card.description}</h2>
-                 <p>가격:${card.price}</p>
-                `;
+          <img src="${card.imageSrc}" alt="${card.description}">
+          <h2>설명:${card.description}</h2>
+          <p>가격:${card.price}</p>
+        `;
 
               // card 내용 자식으로 추가하기
               cardList.appendChild(cardItem);
             });
+
             cardContainer.appendChild(cardList);
           });
+
+          // 탭버튼 클릭 시
+          const menuItem = document.querySelectorAll(".menu-item");
+          menuItem.forEach((menuI, index) => {
+            // console.log(menuItem, index);
+            menuI.addEventListener("click", () => {
+              showCard(index);
+            });
+          });
+
+          // 보여지는 함수
+          function showCard(index) {
+            const cards = document.querySelectorAll(".card");
+            const menuItems = document.querySelectorAll(".menu-item");
+
+            cards.forEach((card, i) => {
+              card.classList.toggle("active", i === index);
+            });
+
+            menuItems.forEach((item, i) => {
+              item.classList.toggle("active", i === index);
+            });
+          }
+          
+          // 첫 화면에 index 0 보여주기
+          showCard(0);
         })
+
         .catch((error) => {
           console.log(error);
         });
-
-      const menuItem = document.querySelectorAll(".menu-item");
-
-      menuItem.forEach((menuI, index) => {
-        // console.log(menuItem, index);
-        menuI.addEventListener("click", () => {
-          showCard(index);
-        });
-      });
-
-      // 보여지는 함수
-      function showCard(index) {}
     </script>
   </body>
 </html>

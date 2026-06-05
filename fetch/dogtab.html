@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>강아지 정보</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        list-style: none;
+      }
+      a {
+        text-decoration: none;
+        color: #333;
+      }
+      #container {
+        width: 500px;
+        margin: 50px auto;
+        padding: 20px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+      }
+      #container ul {
+        display: flex;
+        margin-top: 20px;
+      }
+      #container ul li a {
+        padding: 10px 20px;
+        background-color: #f7d8a6;
+        font-weight: bold;
+      }
+      #container ul li a:hover,
+      #container ul li a.active {
+        color: #fff;
+        background-color: #ec9200;
+      }
+      img {
+        width: 100%;
+        display: block;
+      }
+      #info h2 {
+        margin-top: 20px;
+        margin-bottom: 5px;
+      }
+      #info p {
+        margin-top: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="container">
+      <h1>강아지 정보</h1>
+      <ul>
+        <li><a href="#" data-dog="이브">이브</a></li>
+        <li><a href="#" data-dog="애플">애플</a></li>
+        <li><a href="#" data-dog="몽지">몽지</a></li>
+      </ul>
+      <div id="info">
+        <!-- js 출력 -->
+      </div>
+    </div>`
+    <script>
+      const dogLinks = document.querySelectorAll("#container ul li a");
+      dogLinks.forEach((link) => {
+        link.addEventListener("click", () => {
+          showDogInfo(link.getAttribute("data-dog"), link);
+        });
+      });
+
+      // 실행 함수
+      function showDogInfo(dogname, element) {
+        const infoDiv = document.querySelector("#info");
+        infoDiv.innerHTML = "";
+
+        fetch("dogData.json")
+          .then((response) => {
+            return response.json();
+          })
+          .then((dogInfo) => {
+            const dog = dogInfo[dogname];
+            infoDiv.innerHTML = `<h2>${dog.name}</h2>
+         <img src="${dog.image}" alt="${dog.name}">
+         <p>${dog.description}</p>`;
+
+            dogLinks.forEach((link) => {
+              link.classList.toggle("active", link === element);
+            });
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+      }
+      // 첫 화면 로딩 시 (초기화)
+      showDogInfo(dogLinks[0].getAttribute("data-dog"), dogLinks[0]);
+    </script>
+  </body>
+</html>
