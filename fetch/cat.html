@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>고양이 (페이지네이션)</title>
+  </head>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    a {
+      text-decoration: none;
+      color: #333;
+    }
+    img {
+      width: 100%;
+      display: block;
+      border-radius: 10px;
+      height: 350px;
+      object-fit: cover;
+    }
+    #catlist {
+      display: flex;
+      margin: 50px auto;
+      width: 1000px;
+      justify-content: space-between;
+      gap: 10px;
+    }
+    .cat-card {
+      width: calc((100% - 20px) / 3);
+      padding: 10px;
+      margin-bottom: 10px;
+      border-radius: 10px;
+      background-color: rgb(255, 244, 223);
+      box-shadow: 1px 1px 1px rgb(204, 193, 171);
+    }
+    .cat-card h2 {
+      margin: 10px 0 5px 0;
+    }
+    .pagination {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+    }
+    .page-link {
+      background-color: rgb(255, 215, 164);
+      color: #fff;
+      padding: 10px 16px;
+      border-radius: 50%;
+      font-weight: bold;
+    }
+    .page-link.active {
+      background-color: rgb(255, 174, 68);
+    }
+  </style>
+  <body>
+    <div id="catlist">
+      <!-- js 출력 -->
+    </div>
+    <div class="pagination" id="pagination">
+      <!-- js 출력 -->
+    </div>
+
+    <script>
+      // 첫 페이지에 보여질 카드 갯수
+      const itemsPerPage = 3;
+      // 현재 페이지 번호
+      let currentPage = 1;
+
+      const catListDiv = document.querySelector("#catlist");
+      const paginationDiv = document.querySelector("#pagination");
+      const prevBtn = document.createElement("a");
+      const nextBtn = document.createElement("a");
+
+      // 고양이 정보를 가져와서 화면에 출력하는 함수
+      function displayCatInfo(page) {
+        // 기존 카드 삭제
+        catListDiv.innerHTML = "";
+        // console.log(page); // 1
+        fetch("cat_list.json")
+          .then((response) => response.json())
+          .then((data) => {
+            // 페이지네이션 계산
+            // 처음 보여지는 index 번호
+            const startIndex = (page - 1) * itemsPerPage;
+            // console.log(startIndex); // 0
+
+            // 마지막 index 번호
+            const endIndex = startIndex + itemsPerPage;
+            // console.log(endIndex); // 3
+
+            const catsOnPage = data.slice(startIndex, endIndex);
+            // console.log(catsOnPage); // 0, 1, 2
+
+            catsOnPage.forEach((cat) => {
+              // div 생성
+              const catCard = document.createElement("div");
+              // div class(이름) 생성
+              catCard.className = "cat-card";
+              // div 내용
+              catCard.innerHTML = `<a href="#">
+        <img src="${cat.url}" alt="${cat.title}">
+        <h2>${cat.title}</h2>
+        <p>${cat.description}</p></a>`;
+
+              // div 실행
+              catListDiv.appendChild(catCard);
+            });
+            pagination(data.length);
+          })
+
+          // error
+          .catch((error) => {
+            console.log(error);
+          });
+      }
+
+      // 페이지네이션 생성
+      function pagination(totalItems) {
+        // console.log(totalItems) // 10
+        paginationDiv.innerHTML = "";
+
+        // 페이지네이션 갯수
+        const totalPage = Math.ceil(totalItems / itemsPerPage);
+        // console.log(totalPage) // 4
+
+        for (let i = 1; i <= totalPage; i++) {
+          // console.log(i); // 1~4 반복
+
+          // a ( + class) 태그 생성
+          const pageLink = document.createElement("a");
+          pageLink.className = "page-link";
+
+          // 페이지로 이동
+          pageLink.href = `?page=${i}`;
+          // 텍스트 넣기
+          pageLink.textContent = i;
+          if (i === currentPage) {
+            pageLink.classList.add("active");
+          }
+          pageLink.addEventListener("click", (e) => {
+            e.preventDefault();
+            currentPage = i;
+            displayCatInfo(currentPage);
+          });
+
+          paginationDiv.appendChild(pageLink);
+        }
+      }
+      displayCatInfo(currentPage);
+    </script>
+  </body>
+</html>
