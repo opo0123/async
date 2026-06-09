@@ -48,12 +48,16 @@
     .page-link {
       background-color: rgb(255, 215, 164);
       color: #fff;
-      padding: 10px 16px;
-      border-radius: 50%;
+      padding: 10px 17px;
+      border-radius: 20px;
       font-weight: bold;
+      padding-bottom: 11px;
     }
     .page-link.active {
       background-color: rgb(255, 174, 68);
+    }
+    .page-link.disabled {
+      background-color: rgb(255, 244, 231);
     }
   </style>
   <body>
@@ -72,8 +76,6 @@
 
       const catListDiv = document.querySelector("#catlist");
       const paginationDiv = document.querySelector("#pagination");
-      const prevBtn = document.createElement("a");
-      const nextBtn = document.createElement("a");
 
       // 고양이 정보를 가져와서 화면에 출력하는 함수
       function displayCatInfo(page) {
@@ -101,7 +103,7 @@
               // div class(이름) 생성
               catCard.className = "cat-card";
               // div 내용
-              catCard.innerHTML = `<a href="#">
+              catCard.innerHTML = `<a href="cat_cate.html?id=${cat.id}">
         <img src="${cat.url}" alt="${cat.title}">
         <h2>${cat.title}</h2>
         <p>${cat.description}</p></a>`;
@@ -149,7 +151,48 @@
 
           paginationDiv.appendChild(pageLink);
         }
+        // 이전 버튼
+        const prevBtn = document.createElement("a");
+        prevBtn.className = "page-link";
+        prevBtn.textContent = "이전";
+
+        // 페이지가 1번이면 이전 버튼 비활성화
+        if (currentPage === 1) {
+          prevBtn.classList.add("disabled");
+        }
+
+        // 이전버튼 클릭 시
+        prevBtn.onclick = () => {
+          if (currentPage > 1) {
+            currentPage--;
+            displayCatInfo(currentPage);
+          }
+        };
+
+        // 이전 버튼 위치
+        paginationDiv.insertBefore(prevBtn, paginationDiv.firstChild);
+
+        // 다음 버튼
+        const nextBtn = document.createElement("a");
+        nextBtn.className = "page-link";
+        nextBtn.textContent = "다음";
+
+        // 페이지가 마지막이면 다음 버튼 비활성화
+        if (currentPage === totalPage) {
+          nextBtn.classList.add("disabled");
+        }
+        // 다음 버튼 클릭 시
+        nextBtn.onclick = () => {
+          if (currentPage < totalPage) {
+            currentPage++;
+            displayCatInfo(currentPage);
+          }
+        };
+
+        // 다음 버튼 위치
+        paginationDiv.appendChild(nextBtn);
       }
+
       displayCatInfo(currentPage);
     </script>
   </body>

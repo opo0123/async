@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>고양이 정보</title>
+  </head>
+  <style>
+    .wrap {
+      width: 50%;
+      margin: 0 auto;
+      text-align: center;
+    }
+    .cat-card {
+      width: 300px;
+      background-color: rgb(255, 244, 223);
+      box-shadow: 1px 1px 1px rgb(204, 193, 171);
+      padding: 10px;
+      margin: 0 auto;
+      border-radius: 10px;
+    }
+    img {
+      width: 100%;
+      display: block;
+      border-radius: 10px;
+      height: 350px;
+      object-fit: cover;
+    }
+  </style>
+  <body>
+    <div class="wrap">
+      <h2>고양이 정보</h2>
+      <div id="catList">
+        <!-- js 출력 -->
+      </div>
+    </div>
+    <script>
+      // url에서 쿼리 문자열을 읽어와서 고양이 아이디를 가져옴
+      const urlParams = new URLSearchParams(window.location.search);
+      const catId = urlParams.get("id");
+
+      function displayCatInfo() {
+        fetch("cat_list.json")
+          .then((res) => res.json())
+          .then((data) => {
+            const catListDiv = document.querySelector("#catList");
+
+            const cat = data.find((c) => c.id === parseInt(catId));
+
+            if (cat) {
+              const catCard = document.createElement("div");
+              catCard.className = "cat-card";
+              catCard.innerHTML = `<img src="${cat.url}" alt="${cat.title}" class="cat-img">
+         <h3>${cat.id}</h3>
+         <h2>${cat.title}</h2>
+         <p>${cat.description}</p>`;
+
+              catListDiv.appendChild(catCard);
+            } else {
+              catListDiv.textContent = "고양이 정보가 없습니다.";
+            }
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+      }
+      displayCatInfo();
+    </script>
+  </body>
+</html>
