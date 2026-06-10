@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>await</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      ul,
+      li {
+        list-style: none;
+      }
+      img {
+        width: 100%;
+        display: block;
+        object-fit: contain;
+        height: 250px;
+        margin-bottom: 20px;
+      }
+      h1 {
+        margin: 50px auto;
+        text-align: center;
+      }
+      h2 {
+        margin: 50px auto;
+      }
+      #list {
+        max-width: 1200px;
+        margin: 50px auto;
+        display: grid;
+        gap: 20px;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      }
+      #list li {
+        padding: 20px;
+        border: 1px solid #eee;
+        border-radius: 10px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      }
+      h3 {
+        margin-bottom: 10px;
+      }
+      p {
+        margin: 5px 0;
+      }
+      p:last-of-type {
+        margin-top: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>상품 리스트</h1>
+    <ul id="list">
+      <!-- js 출력 -->
+    </ul>
+    <script>
+      // async : 시간이 걸리는 작업을 기다리는 동안 프로그램이 멈추지 않게 해주는 함수
+      // try : 성공, catch : 실패
+      // finally : 무조건 마지막에 실행
+      async function getProducts() {
+        try {
+          const res = await fetch("https://fakestoreapi.com/products?limit=12");
+          const data = await res.json();
+          // console.log(data);
+
+          const ulE = document.querySelector("#list");
+          data.forEach((pro) => {
+            // console.log(pro); // 하나씩 찍힘
+
+            // ul 안에 바로 li 만들기
+            ulE.innerHTML += `<li>
+        <img src="${pro.image}" alt="${pro.catagory}" />
+        <h3>${pro.title}</h3>
+        <p><strong>Price</strong> : $${pro.price}</p>
+        <p><strong>Category</strong> : ${pro.category}</p>
+        <p>${pro.description}</p>
+        <p><strong>⭐</strong> ${pro.rating.rate} | <strong>💬</strong> ${pro.rating.count}</p>
+        
+      </li>`;
+          });
+        } catch (e) {
+          console.log("error :", e);
+        } finally {
+          console.log("데이터 불러오기 완료");
+        }
+      }
+      getProducts();
+    </script>
+  </body>
+</html>
