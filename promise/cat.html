@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>고양이 리스트</title>
+    <style>
+      #catList {
+        display: flex;
+        gap: 20px;
+        flex-wrap: wrap;
+      }
+
+      .card {
+        width: 300px;
+        border: 1px solid #ddd;
+        border-radius: 10px;
+        overflow: hidden;
+      }
+
+      .card img {
+        width: 100%;
+        height: 350px;
+        object-fit: cover;
+      }
+
+      .card h3 {
+        padding: 5px 15px;
+      }
+
+      a {
+        color: #333;
+        text-decoration: none;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>고양이 🐈🐾</h1>
+    <div id="catList">
+      <!-- js -->
+    </div>
+
+    <script>
+      async function getCats() {
+        const res = await fetch("cats.json");
+        const cats = await res.json();
+        console.log(cats);
+
+        const catList = document.querySelector("#catList");
+        cats.forEach((cat) => {
+          catList.innerHTML += `<div class="card"><a href="detail.html?id=${cat.id}">
+          <img src="${cat.image}" alt="${cat.id}" />
+          <h3>${cat.name}</h3>
+        </a></div>`;
+        });
+      }
+      getCats();
+    </script>
+  </body>
+</html>

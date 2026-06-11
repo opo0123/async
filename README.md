@@ -6,3 +6,5 @@
 # 260605_fetch-tab, 강아지 정보
 # 260608_fetch-cat(페이지네이션)-(이전,다음 버튼 전까지)
 # 260609_fetch-cat+cat_cate 완료
+# 260610_promise-await1-2
+# 260611_promise-catdetail, weather

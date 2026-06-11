@@ -1,0 +1,112 @@
+[
+  {
+    "id": 1,
+    "name": "코리안 숏헤어",
+    "image": "images/k.png",
+    "origin": "대한민국",
+    "temperament": "활발함, 친근함",
+    "life_span": "12~15",
+    "intelligence": 4,
+    "affection_level": 5,
+    "description": "한국에서 가장 흔하게 볼 수 있는 고양이입니다."
+  },
+  {
+    "id": 2,
+    "name": "러시안 블루",
+    "image": "images/r.png",
+    "origin": "러시아",
+    "temperament": "조용함, 영리함",
+    "life_span": "15~20",
+    "intelligence": 5,
+    "affection_level": 4,
+    "description": "은빛 털과 초록 눈이 특징입니다."
+  },
+  {
+    "id": 3,
+    "name": "페르시안",
+    "image": "images/p.png",
+    "origin": "이란",
+    "temperament": "온순함",
+    "life_span": "12~17",
+    "intelligence": 3,
+    "affection_level": 5,
+    "description": "긴 털과 납작한 얼굴이 특징입니다."
+  },
+  {
+    "id": 4,
+    "name": "벵갈",
+    "image": "images/v.png",
+    "origin": "미국",
+    "temperament": "활동적, 호기심 많음",
+    "life_span": "12~16",
+    "intelligence": 5,
+    "affection_level": 4,
+    "description": "표범 같은 무늬를 가진 매우 활동적인 고양이입니다."
+  },
+  {
+    "id": 5,
+    "name": "메인쿤",
+    "image": "images/m.png",
+    "origin": "미국",
+    "temperament": "온화함, 사교적",
+    "life_span": "10~13",
+    "intelligence": 4,
+    "affection_level": 5,
+    "description": "대형 묘종으로 사람을 잘 따르는 것이 특징입니다."
+  },
+  {
+    "id": 6,
+    "name": "스코티시 폴드",
+    "image": "images/c.png",
+    "origin": "스코틀랜드",
+    "temperament": "차분함, 애교 많음",
+    "life_span": "11~15",
+    "intelligence": 4,
+    "affection_level": 5,
+    "description": "접힌 귀가 특징인 인기 있는 품종입니다."
+  },
+  {
+    "id": 7,
+    "name": "샴",
+    "image": "images/s.png",
+    "origin": "태국",
+    "temperament": "수다스러움, 애정이 많음",
+    "life_span": "15~20",
+    "intelligence": 5,
+    "affection_level": 5,
+    "description": "파란 눈과 포인트 컬러가 특징인 고양이입니다."
+  },
+  {
+    "id": 8,
+    "name": "랙돌",
+    "image": "images/d.png",
+    "origin": "미국",
+    "temperament": "온순함, 느긋함",
+    "life_span": "12~17",
+    "intelligence": 4,
+    "affection_level": 5,
+    "description": "안으면 몸에 힘을 빼는 성향 때문에 붙은 이름입니다."
+  },
+  {
+    "id": 9,
+    "name": "아비시니안",
+    "image": "images/a.png",
+    "origin": "에티오피아",
+    "temperament": "활발함, 영리함",
+    "life_span": "12~15",
+    "intelligence": 5,
+    "affection_level": 4,
+    "description": "운동량이 많고 탐험을 좋아하는 품종입니다."
+  },
+  {
+    "id": 10,
+    "name": "브리티시 숏헤어",
+    "image": "images/b.png",
+    "origin": "영국",
+    "temperament": "차분함, 독립적",
+    "life_span": "12~20",
+    "intelligence": 4,
+    "affection_level": 4,
+    "description": "동그란 얼굴과 통통한 체형이 특징입니다."
+  }
+]

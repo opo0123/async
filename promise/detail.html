@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>detail</title>
+    <style>
+      .container {
+        width: 800px;
+        margin: 50px auto;
+      }
+
+      img {
+        width: 100%;
+        max-width: 500px;
+      }
+
+      .info {
+        margin-top: 20px;
+      }
+
+      .info p {
+        margin: 10px 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="detail">
+      <!-- js -->
+    </div>
+
+    <script>
+      // url 파라미터 받기
+      const params = new URLSearchParams(location.search);
+
+      // id 추출
+      const id = Number(params.get("id"));
+
+      async function getDetail() {
+        try {
+          const res = await fetch("cats.json");
+          const cats = await res.json();
+
+          // 파라미터로 받아 온 id와 json의 id 값을 비교해서 같은 데이터를 찾는다
+          const cat = cats.find((item) => item.id === id);
+
+          const detail = document.querySelector("#detail");
+
+          // 없는 id처리 및 받은 id가 없을 경우 (!(cat) = cat이 없으면...)
+          if (!cat) {
+            detail.innerHTML = `<h2>고양이 정보를 찾을 수 없습니다.😿</h2>
+         <a href="cat.html">목록보기</a>`;
+          }
+
+          detail.innerHTML = `<div class="container">
+        <img src="${cat.image}" alt="${cat.name}" />
+        <div class="info">
+          <h1>${cat.name}</h1>
+          <p><strong>원산지 : ${cat.origin}</strong></p>
+          <p><strong>성격 : ${cat.temperament}</strong></p>
+          <p><strong>수명 : ${cat.life_span}</strong></p>
+          <p><strong>지능 : ⭐${cat.intelligence}</strong></p>
+          <p><strong>친화력 : 💛${cat.affection_level}</strong></p>
+          <p>${cat.description}</p>
+        </div>
+        <p><a href="cat.html">목록 보기</a></p>
+      </div>`;
+        } catch (e) {
+          // 오류 찍힘
+          console.error(e);
+        }
+      }
+
+      getDetail();
+    </script>
+  </body>
+</html>
